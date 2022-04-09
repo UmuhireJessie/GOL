@@ -42,6 +42,10 @@
                             <a href="./contact.html" class="nav-link">CONTACT</a>
                         </li>
                         <li class="nav-item">
+                            <a href="./table.html" class="nav-link">LEADERBOARD</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="./Faq.html" class="nav-link">HELP</a>
                         </li>
                     </ul>
@@ -53,29 +57,36 @@
         <div class="row">
             <div class="register">
 
-                <form id="treeUpload">
+                <form id="form">
                     <div class="form-title">
                         <h4>FILL OUT THIS FORM TO REGISTER</h4>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="address" placeholder="Enter your address name">
+                        <input type="text" class="form-control" id="address" name="address"
+                            placeholder="Enter your address name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="phone" placeholder="Telephone number">
+                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                            placeholder="Telephone number">
                     </div>
-                    
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="userName" name="userName"
+                            placeholder="Create username">
+                    </div>
+
                     <div class="form-group">
                         <p class="form-control upload-input">
-                            <input id="file-input" type="file"/>
-                            <label for="file-input"><img src="../images/upload.svg"></label>
-                            Upload an image of trees you planted</p>
+                            <input id="fileInput" name="treeImage" type="file" />
+                            <label for="fileInput"><img src="../images/upload.svg"></label>
+                            Upload an image of trees you planted
+                        </p>
                     </div>
 
                     <button type="submit" class="btn btn-primary form-submit">SUBMIT</button>
-
                 </form>
 
             </div>
@@ -100,5 +111,58 @@
     </div>
 
 </body>
+
+<script src="../js/register.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+
+    const form = document.querySelector("#form");
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        var name = form.name.value;
+        var address = form.address.value;
+        var phoneNumber = form.phoneNumber.value;
+        var userName = form.userName.value;
+        var treeImage = form.fileInput.files[0];
+        var userName = form.userName.value;
+
+        try {
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("address", address);
+            formData.append("phoneNumber", phoneNumber);
+            formData.append("userName", userName);
+            formData.append("treeImage", treeImage);
+
+            response = await fetch(server + "register", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+            console.log(data);
+
+            if (response.status == 201) {
+                swal("successfully added", data.message, "success")
+
+            form.name.value = "";
+            form.address.value = "";
+            form.phoneNumber.value = "";
+            form.userName.value = "";
+            form.userName.value = "";
+            } else if (response.status == 403) {
+                swal("Error", data.message, "error")
+            }
+            
+        } catch (err) {
+            console.log(err);
+        }
+
+    })
+
+</script>
 
 </html>

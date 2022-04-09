@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/table.css">
+    <title>Rank leaderboard</title>
+    <script src="../js/app.js"></script>
+</head>
+
+</head>
+
+<div class="navigation">
+    <h2 class="navigation__logo">GWavers</h2>
+
+    <nav class="navigation__nav">
+        <ol class="navigaion__list">
+            <li class="navigaion__item"><a href="../index.html" class="navigation__item--link active">home</a></li>
+            <li class="navigaion__item"><a href="./about.html" class="navigation__item--link">about</a></li>
+            <li class="navigaion__item"><a href="./register.html" class="navigation__item--link">register</a></li>
+            <li class="navigaion__item"><a href="./contact.html" class="navigation__item--link">contact</a></li>
+            <li class="navigaion__item"><a href="./table.html" class="navigation__item--link">leaderboard</a></li>
+            <li class="navigaion__item"><a href="./Faq.html" class="navigation__item--link">help</a></li>
+        </ol>
+    </nav>
+
+    <div class="nav__button-main">
+        <div class="nav__button nav__button--1"></div>
+        <div class="nav__button nav__button--2"></div>
+        <div class="nav__button nav__button--3"></div>
+    </div>
+</div>
+
+<head>
+
+<body>
+
+    <div class="container-wrap">
+        <section id="leaderboard">
+
+            <nav class="ladder-nav">
+                <div class="ladder-title">
+                    <h1>standings</h1>
+                </div>
+                <div class="ladder-search">
+                    <input type="text" id="search-leaderboard" class="live-search-box" placeholder="search participant">
+                </div>
+            </nav>
+            <div class="container">
+                <table id="ranking" class="leaderboard-results" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>No of Trees</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td>1</td>
+                        <td>humphrey</td>
+                        <td>60</td>
+                    </tbody>
+                    <tbody>
+                        <td>2</td>
+                        <td>Purity</td>
+                        <td>50</td>
+                    </tbody>
+                    <tbody>
+                        <td>3</td>
+                        <td>Couise</td>
+                        <td>40</td>
+                    </tbody>
+                    <tbody>
+                        <td>4</td>
+                        <td>Jessie</td>
+                        <td>30</td>
+                    </tbody>
+                    <tbody>
+                        <td>5</td>
+                        <td>Ian</td>
+                        <td>25</td>
+                    </tbody>
+                </table>
+
+                <a href="../html/admin.html">
+                    <div class="form-group">
+                        <p class="form-control upload-input">
+                            <!-- <input id="file-input" type="file"/>
+                            <label for="file-input"><img src="../images/upload.svg"></label> -->
+                        </p>
+                    </div>
+
+                </a>
+
+            </div>
+        </section>
+    </div>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">ADD IMAGE</button>
+
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
+            </div>
+
+            <form id="form">
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" id= "userName" name="uname" required>
+
+                    <p class="form-control upload-input">
+                        <input id="fileInput" type="file" />
+                        <label for="fileInput"><img src="../images/upload.svg"></label>
+                    <p class="img">Upload image</p>
+                    </p>
+                </div>
+
+                <button href="./table.html" type="submit" >SUBMIT</button>
+                <label>
+                    <span class="psw">Forgot <a href="#">username?</a></span>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </form>
+
+
+
+            <div class="container">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">cancel</button>
+
+
+
+        </form>
+    </div>
+    
+    <script src="./js/index.js"></script>
+
+
+</body>
+
+<script>
+    
+</script>
+
+</html>
