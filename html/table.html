@@ -58,7 +58,7 @@
 
                         </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                         <td>1</td>
                         <td>humphrey</td>
                         <td>60</td>
@@ -82,7 +82,7 @@
                         <td>5</td>
                         <td>Ian</td>
                         <td>25</td>
-                    </tbody>
+                    </tbody> -->
                 </table>
 
                 <a href="../html/admin.html">
@@ -103,49 +103,120 @@
 
     <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="/action_page.php" method="post">
+        <form class="modal-content animate" id="form">
+
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close"
                     title="Close Modal">&times;</span>
             </div>
 
-            <form id="form">
-                <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" id= "userName" name="uname" required>
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="userName" name="uname" required>
 
-                    <p class="form-control upload-input">
-                        <input id="fileInput" type="file" />
-                        <label for="fileInput"><img src="../images/upload.svg"></label>
-                    <p class="img">Upload image</p>
-                    </p>
-                </div>
+                <p class="form-control upload-input">
+                    <input id="fileInput" type="file" />
+                    <label for="fileInput"><img src="../images/upload.svg"></label>
+                <p class="img">Upload image</p>
+                </p>
+            </div>
 
-                <button href="./table.html" type="submit" >SUBMIT</button>
-                <label>
-                    <span class="psw">Forgot <a href="#">username?</a></span>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </form>
-
-
+            <button href="./table.html" type="submit">SUBMIT</button>
+            <label>
+                <span class="psw">Forgot <a href="#">username</a></span>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
 
             <div class="container">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'"
                     class="cancelbtn">cancel</button>
-
-
+            </div>
 
         </form>
     </div>
-    
-    <script src="./js/index.js"></script>
+
+    <script src="../js/index.js"></script>
 
 
 </body>
 
+<script src="../js/register.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
-    
+
+    const allParticipant = async () => {
+        const response = await fetch(server + 'register')
+        const data = await response.json();
+        data.alltrees.forEach(tree => {
+            console.log(tree);
+
+            const username = tree.userName;
+            const treeNum = tree.treeImage.length;
+
+            AddRow(username, treeNum);
+
+        })
+    }
+    let rowsNum = 0;
+
+    function AddRow(participantName, countTree) {
+        const treeTr = document.querySelector('#ranking');
+
+        var tbody = document.createElement('tbody');
+        var tdNum = document.createElement('td');
+        var tdName = document.createElement('td');
+        var tdNumTrees = document.createElement('td');
+        rowsNum += 1;
+
+        tdNum.innerHTML = rowsNum;
+        tdName.innerHTML = participantName;
+        tdNumTrees.innerHTML = countTree;
+
+        tbody.appendChild(tdNum);
+        tbody.appendChild(tdName);
+        tbody.appendChild(tdNumTrees);
+
+        treeTr.appendChild(tbody);
+    }
+
+    allParticipant();
+
+    const form = document.querySelector("#form");
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        var name = form.userName.value;
+        var treeImage = form.fileInput.files[0];
+
+        try {
+            const formData = new FormData();
+            formData.append("userName", name)
+            formData.append("treeImage", treeImage)
+
+            response = await fetch(server + "registerImage", {
+                method: "PATCH",
+                body: formData
+            });
+            
+            const data = await response.json();
+            console.log(data.message)
+
+            if (response.status == 201) {
+                swal("successfully added", data.message, "success")
+            } else if (response.status == 403) {
+                swal("Error", data.message, "error")
+            } else {
+                swal('Error', data.message, 'error');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    })
+
+
+
 </script>
 
 </html>
