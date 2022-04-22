@@ -1,11 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+:root{
+    --col-white: #ffff;
+    --col-black:#000;
+    --col-green:rgb(9, 241, 113);
+    --col-green-dark:rgb(5, 158, 74);
+    --col-white-dark:rgb(221, 218, 218);
+    --col-green-primary: #426A0A;
+    --col-black-light: #333;
+    --skin-color:rgba(66, 106, 10, 0.94);
+}
 *
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto';
 }
+.fixedbar {
+    background: #fff;
+    position: fixed;
+    margin-left: -7.7%;
+    z-index: 10;
+}
+.main-content {
+    margin-bottom: 50px;
+}
+.navbar .navbar-brand {
+    margin-left: 20px;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--skin-color);
+    
+}
+
+.nav {
+    margin-right: 2%;
+}
+
+.nav li a {
+    color: black;
+    margin-right: 4em;
+    justify-content: space-between;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px;
+    text-decoration: none;   
+}
+.nav li a:hover{
+    color: var(--col-green-primary);
+}
+
 .contact
 {
     position: relative;
@@ -26,6 +71,8 @@
 }
 .contact .content h2
 {
+    padding-top: 20%;
+    padding-bottom: 5%;
     font-size: 36px;
     font-weight: 500;
     color: #fff;
@@ -34,6 +81,7 @@
 {
     font-weight: 300;
     color: #fff;
+    /* padding-bottom: 1%; */
 }
 .container
 {
@@ -169,7 +217,21 @@ footer p {
     text-align: center;
     font-size: 18px;
 }
-
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.icons a i {
+    color: #000;
+}
+.fa {
+    margin-right: 2rem;
+}
+.infa {
+    margin-right: 0;
+}
  
 .navigation{
  
@@ -319,16 +381,6 @@ footer p {
  
 html{
     font-size: 62.5%;
-}
- 
-:root{
-    --col-white: #ffff;
-    --col-black:#000;
-    --col-green:rgb(9, 241, 113);
-    --col-green-dark:rgb(5, 158, 74);
-    --col-white-dark:rgb(221, 218, 218);
-    --col-green-primary: #426A0A;
-    --col-black-light: #333;
 }
  
 body{
