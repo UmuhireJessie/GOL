@@ -18,6 +18,7 @@
 }
 .fixedbar {
     background: #fff;
+    line-height: 2.7em;
     position: fixed;
     margin-left: -7.7%;
     z-index: 10;
