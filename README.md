@@ -1,5 +1,6 @@
 # GreenWavers
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b1c9dc6e-9f8e-4f4f-927c-323a3be05d93/deploy-status)](https://app.netlify.com/sites/greenwaver-app/deploys)
 ## Description of the App
 The application that will be used for the competition.
 
