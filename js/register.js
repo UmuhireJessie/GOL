@@ -1,2 +1,2 @@
 let response;
-const server = "https://greenwaverapi.herokuapp.com/";
+const server = "https://greenwavers.onrender.com/";
